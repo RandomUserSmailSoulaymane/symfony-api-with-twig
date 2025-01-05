@@ -1,0 +1,31 @@
+{# templates/products/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des Produits
+{% endblock %}
+
+{% block body %}
+    <section class="products-section">
+        <h2>Liste des produits</h2>
+
+        {# Link to see products in JSON format #}
+        <a class="btn api-link" href="{{ path('api_products_list') }}" target="_blank">
+            Voir les produits en JSON
+        </a>
+
+        <div class="products-grid">
+            {% if products is empty %}
+                <p>Aucun produit disponible.</p>
+            {% else %}
+                {% for product in products %}
+                    <div class="product-box">
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">Prix : {{ product.price }} €</p>
+                        <p class="product-id">ID : {{ product.id }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

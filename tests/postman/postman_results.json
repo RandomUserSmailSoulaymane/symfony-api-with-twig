@@ -1,0 +1,132 @@
+{
+	"id": "d42e4b1f-c78e-4ea9-99b6-86d9acbd1db9",
+	"name": "TWIG / API TESTING",
+	"timestamp": "2025-01-05T22:46:06.567Z",
+	"collection_id": "28973141-819d1fc7-f42a-4880-8664-5cf3e199ce51",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-05T22:45:57.058Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "8c22d258-f55b-48ae-ae05-b675d7e113c7",
+			"name": "Retrieve all products",
+			"url": "http://127.0.0.1:8000/api/products",
+			"time": 1796,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1796
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9e7c2ef9-a432-4ddc-aeb7-0102679f6181",
+			"name": "Retrieve a single product by ID",
+			"url": "http://127.0.0.1:8000/api/products/5",
+			"time": 1318,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1318
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0dc9be8d-1604-4fe6-8680-7447dc1564bb",
+			"name": "Create a new product",
+			"url": "http://127.0.0.1:8000/api/products",
+			"time": 1247,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1247
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5013ac7f-f228-40fb-b9e9-b2c618476c7a",
+			"name": "Update an existing product",
+			"url": "http://127.0.0.1:8000/api/products/3",
+			"time": 1619,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1619
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "839f79a1-7c00-40a5-a8eb-cd3cdbd12e09",
+			"name": "Delete a product by its ID",
+			"url": "http://127.0.0.1:8000/api/products/4",
+			"time": 1821,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1821
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 7801,
+	"collection": {
+		"requests": [
+			{
+				"id": "8c22d258-f55b-48ae-ae05-b675d7e113c7",
+				"method": "GET"
+			},
+			{
+				"id": "9e7c2ef9-a432-4ddc-aeb7-0102679f6181",
+				"method": "GET"
+			},
+			{
+				"id": "0dc9be8d-1604-4fe6-8680-7447dc1564bb",
+				"method": "POST"
+			},
+			{
+				"id": "5013ac7f-f228-40fb-b9e9-b2c618476c7a",
+				"method": "PUT"
+			},
+			{
+				"id": "839f79a1-7c00-40a5-a8eb-cd3cdbd12e09",
+				"method": "DELETE"
+			}
+		]
+	}
+}

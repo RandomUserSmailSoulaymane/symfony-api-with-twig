@@ -1,0 +1,89 @@
+/* public/css/app.css */
+
+/* -- Global reset/basic styling -- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: #333;
+}
+
+
+.header, .footer {
+    background: #b12e2e;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+.main-content {
+    margin: 2rem auto;
+    max-width: 900px;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+
+.btn {
+    display: inline-block;
+    background: #d14c4c; 
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #a13a3a; 
+}
+
+
+.products-section {
+    padding: 1rem;
+}
+
+.products-section h2 {
+    margin-top: 0;
+}
+
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+.product-box {
+    background: #fdefef; 
+    border: 1px solid #e0b4b4;
+    border-radius: 6px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.05);
+}
+
+.product-box h3 {
+    margin: 0 0 0.5rem;
+    color: #b12e2e;
+}
+
+.product-box .price {
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.product-box .product-id {
+    color: #666;
+    font-size: 0.85rem;
+    margin: 0;
+}
