@@ -3,25 +3,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}API-Twig Example{% endblock %}</title>
-
-    {# Link to your custom CSS file in public/css/app.css #}
+    <title>{% block title %}Symfony Dark{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <header class="header">
-        <h1>Bienvenue sur l’exemple API + Twig</h1>
-    </header>
+    <div class="page-container">
+        <header class="header">
+            <h1>My Symfony Site</h1>
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="{{ path('login_page') }}">Login</a></li>
+                    <li><a href="{{ path('register_page') }}">Register</a></li>
+                    <li><a href="{{ path('articles_page') }}">Articles</a></li>
+                    <li><a href="{{ path('products_page') }}">Produits</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main class="main-content">
-        {% block body %}{% endblock %}
-    </main>
+
+        <main class="main-content">
+            {% block body %}{% endblock %}
+        </main>
+    </div>
 
     <footer class="footer">
-        <p>&copy; 2025 - Mon Projet Symfony</p>
+        <p>&copy; 2025 - Dark Themed Symfony</p>
     </footer>
 
-    {# Optional global script if needed #}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

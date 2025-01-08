@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Articles{% endblock %}
+
+{% block body %}
+<h2>Liste des Articles</h2>
+
+<div id="articlesContainer" class="articles-list">
+    {# Articles will appear here in a vertical list #}
+</div>
+
+<div id="articlesError" style="display:none; color:red; margin-top:1rem;"></div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('token');
+    const articlesErrorEl = document.getElementById('articlesError');
+    const articlesContainer = document.getElementById('articlesContainer');
+
+    if (!token) {
+        articlesErrorEl.textContent = 'Vous devez vous connecter pour voir les articles.';
+        articlesErrorEl.style.display = 'block';
+        return;
+    }
+
+    try {
+        // Fetch articles from API
+        const response = await fetch('/api/articles', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+
+        const articles = await response.json();
+        if (!Array.isArray(articles)) {
+            throw new Error('Réponse inattendue du serveur (pas un tableau)');
+        }
+
+        // Create DOM elements for each article in a vertical layout
+        articles.forEach(article => {
+            const articleBox = document.createElement('div');
+            articleBox.className = 'article-box';
+
+            articleBox.innerHTML = `
+                <h3>${article.title}</h3>
+                <p>${article.content || ''}</p>
+                <p><strong>Créé le :</strong> ${article.createdAt || 'N/A'}</p>
+                <p><strong>Mise à jour le :</strong> ${article.updatedAt || 'N/A'}</p>
+            `;
+
+            articlesContainer.appendChild(articleBox);
+        });
+    } catch (error) {
+        articlesErrorEl.textContent = 'Erreur : ' + error.message;
+        articlesErrorEl.style.display = 'block';
+    }
+});
+</script>
+{% endblock %}

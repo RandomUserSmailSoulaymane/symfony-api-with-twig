@@ -1,89 +1,195 @@
-/* public/css/app.css */
-
-/* -- Global reset/basic styling -- */
-body {
+/* General reset and dark theme base */
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
-    background: #fafafa;
-    color: #333;
-}
-
-
-.header, .footer {
-    background: #b12e2e;
-    color: #fff;
+    background-color: #1e1e1e;
+    color: #ddd;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Ensures the footer stays at the bottom by making the page container grow */
+  .page-container {
+    flex: 1;
+  }
+  
+  /* Header & Navigation */
+  .header {
+    background: #333;
     padding: 1rem;
     text-align: center;
-}
-
-
-.main-content {
-    margin: 2rem auto;
-    max-width: 900px;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-
-.btn {
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .nav-bar ul {
+    list-style: none;
+    display: inline-flex;
+    gap: 1rem;
+    margin: 1rem 0 0 0;
+    padding: 0;
+  }
+  
+  .nav-bar li {
     display: inline-block;
-    background: #d14c4c; 
-    color: #fff;
+  }
+  
+  .nav-bar a {
+    color: #ddd;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
-    border-radius: 5px;
     font-weight: bold;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: #a13a3a; 
-}
-
-
-.products-section {
+    transition: color 0.2s;
+  }
+  
+  .nav-bar a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    width: 90%;
+    text-align: center;
+  }
+  
+  /* Footer (pinned at bottom) */
+  .footer {
+    background: #333;
+    color: #ddd;
+    text-align: center;
     padding: 1rem;
-}
-
-.products-section h2 {
+    font-size: 0.9rem;
+  }
+  
+  /* Buttons */
+  .btn {
+    background: #d14c4c;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    min-width: 100px;
+    transition: background 0.2s;
+  }
+  
+  .btn:hover {
+    background: #a13a3a;
+  }
+  
+  /* Form Containers (e.g., login/register) */
+  .form-container {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 6px;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .form-container h2 {
     margin-top: 0;
-}
-
-
-.products-grid {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .form-container input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #ddd;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+  }
+  
+  .form-container input:focus {
+    outline: none;
+    border-color: #666;
+  }
+  
+  .switch-link {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .error-message {
+    background-color: #b12e2e;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+  }
+  
+  /* (Optional) Products Grid */
+  .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
-}
-
-
-.product-box {
-    background: #fdefef; 
-    border: 1px solid #e0b4b4;
-    border-radius: 6px;
+  }
+  
+  .product-box {
+    background: #2a2a2a;
+    border: 1px solid #444;
     padding: 1rem;
-    text-align: center;
-    box-shadow: 0 0 4px rgba(0,0,0,0.05);
-}
-
-.product-box h3 {
-    margin: 0 0 0.5rem;
-    color: #b12e2e;
-}
-
-.product-box .price {
-    font-weight: bold;
-    color: #333;
-    margin: 0.5rem 0;
-}
-
-.product-box .product-id {
-    color: #666;
-    font-size: 0.85rem;
-    margin: 0;
-}
+    border-radius: 5px;
+    text-align: left;
+    transition: background 0.2s;
+  }
+  
+  .product-box h3 {
+    margin-top: 0;
+  }
+  
+  .product-box:hover {
+    background: #292929;
+  }
+  
+  /* (Optional) Articles List */
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .article-box {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: left;
+    transition: background 0.2s;
+  }
+  
+  .article-box h3 {
+    margin-top: 0;
+  }
+  
+  .article-box:hover {
+    background: #292929;
+  }
+  

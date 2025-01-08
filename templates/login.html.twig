@@ -1,0 +1,62 @@
+{# templates/login.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <h2>Login</h2>
+    <div id="loginError" class="error-message" style="display:none;"></div>
+
+    <form id="loginForm" onsubmit="return false;">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email" />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Your Password" />
+
+        <button id="loginBtn" class="btn">Sign In</button>
+    </form>
+
+    <p class="switch-link">
+        Don’t have an account?
+        <a href="{{ path('register_page') }}">Create one here</a>
+    </p>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.getElementById('loginBtn').addEventListener('click', async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const errorEl = document.getElementById('loginError');
+
+    errorEl.style.display = 'none';
+    errorEl.textContent = '';
+
+    try {
+        const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        if (!res.ok) {
+            throw new Error('Login failed: ' + res.status);
+        }
+        const data = await res.json();
+        if (data.token) {
+            // store token, redirect
+            localStorage.setItem('token', data.token);
+            window.location.href = '{{ path("articles_page") }}';
+        } else {
+            throw new Error('No token returned');
+        }
+    } catch (err) {
+        errorEl.textContent = 'Error: ' + err.message;
+        errorEl.style.display = 'block';
+    }
+});
+</script>
+{% endblock %}

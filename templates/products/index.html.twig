@@ -1,31 +1,65 @@
-{# templates/products/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Liste des Produits
-{% endblock %}
+{% block title %}Liste des Produits{% endblock %}
 
 {% block body %}
-    <section class="products-section">
-        <h2>Liste des produits</h2>
+<h2>Liste des Produits</h2>
 
-        {# Link to see products in JSON format #}
-        <a class="btn api-link" href="{{ path('api_products_list') }}" target="_blank">
-            Voir les produits en JSON
-        </a>
+<div id="productsContainer" class="products-grid">
+    {# Products will appear here in a grid #}
+</div>
 
-        <div class="products-grid">
-            {% if products is empty %}
-                <p>Aucun produit disponible.</p>
-            {% else %}
-                {% for product in products %}
-                    <div class="product-box">
-                        <h3>{{ product.name }}</h3>
-                        <p class="price">Prix : {{ product.price }} €</p>
-                        <p class="product-id">ID : {{ product.id }}</p>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-    </section>
+<div id="productsError" style="display:none; color:red; margin-top:1rem;"></div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('token');
+    const productsErrorEl = document.getElementById('productsError');
+    const productsContainer = document.getElementById('productsContainer');
+
+    // If no token is present, show error (assuming your API requires auth)
+    if (!token) {
+        productsErrorEl.textContent = 'Vous devez vous connecter pour voir les produits.';
+        productsErrorEl.style.display = 'block';
+        return;
+    }
+
+    try {
+        // Fetch products
+        const response = await fetch('/api/products', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+
+        const products = await response.json();
+        if (!Array.isArray(products)) {
+            throw new Error('Réponse inattendue du serveur (pas un tableau)');
+        }
+
+        // Create DOM elements for each product
+        products.forEach(product => {
+            const productBox = document.createElement('div');
+            productBox.className = 'product-box';
+
+            productBox.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Prix: ${product.price} €</p>
+            `;
+            productsContainer.appendChild(productBox);
+        });
+    } catch (error) {
+        productsErrorEl.textContent = 'Erreur : ' + error.message;
+        productsErrorEl.style.display = 'block';
+    }
+});
+</script>
 {% endblock %}

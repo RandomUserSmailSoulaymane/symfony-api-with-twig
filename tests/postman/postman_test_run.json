@@ -1,0 +1,602 @@
+{
+	"id": "15036395-4d81-4ace-b376-c740494c6340",
+	"name": "TWIG / API TESTING",
+	"timestamp": "2025-01-08T05:39:30.557Z",
+	"collection_id": "28973141-819d1fc7-f42a-4880-8664-5cf3e199ce51",
+	"folder_id": 0,
+	"environment_id": "28973141-b9c8bde3-41c8-4e21-84c8-7766675ba49a",
+	"totalPass": 68,
+	"delay": "100",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-01-08T05:38:18.975Z",
+	"totalFail": 10,
+	"results": [
+		{
+			"id": "8c22d258-f55b-48ae-ae05-b675d7e113c7",
+			"name": "Retrieve all products",
+			"url": "http://127.0.0.1:8000/api/products",
+			"time": 1636,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is an array": true,
+				"Each product has id, name, and price": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Response body is an array": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Each product has id, name, and price": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1810,
+				1446,
+				1636
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is an array": true,
+					"Each product has id, name, and price": true
+				},
+				{
+					"Status code is 200": true,
+					"Response body is an array": true,
+					"Each product has id, name, and price": true
+				},
+				{
+					"Status code is 200": true,
+					"Response body is an array": true,
+					"Each product has id, name, and price": true
+				}
+			]
+		},
+		{
+			"id": "9e7c2ef9-a432-4ddc-aeb7-0102679f6181",
+			"name": "Retrieve a single product by ID",
+			"url": "http://127.0.0.1:8000/api/products/13",
+			"time": 1731,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has product fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 2,
+					"fail": 1
+				},
+				"Response has product fields": {
+					"pass": 2,
+					"fail": 1
+				}
+			},
+			"times": [
+				1471,
+				1447,
+				1731
+			],
+			"allTests": [
+				{
+					"Status code is 200": false,
+					"Response has product fields": false
+				},
+				{
+					"Status code is 200": true,
+					"Response has product fields": true
+				},
+				{
+					"Status code is 200": true,
+					"Response has product fields": true
+				}
+			]
+		},
+		{
+			"id": "0dc9be8d-1604-4fe6-8680-7447dc1564bb",
+			"name": "Create a new product",
+			"url": "http://127.0.0.1:8000/api/products",
+			"time": 1725,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201 (Created)": true,
+				"Response includes success message and product id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201 (Created)": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Response includes success message and product id": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1750,
+				1213,
+				1725
+			],
+			"allTests": [
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes success message and product id": true
+				},
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes success message and product id": true
+				},
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes success message and product id": true
+				}
+			]
+		},
+		{
+			"id": "5013ac7f-f228-40fb-b9e9-b2c618476c7a",
+			"name": "Update an existing product",
+			"url": "http://127.0.0.1:8000/api/products/12",
+			"time": 1741,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200 (OK)": false,
+				"Product updated message": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200 (OK)": {
+					"pass": 1,
+					"fail": 2
+				},
+				"Product updated message": {
+					"pass": 1,
+					"fail": 2
+				}
+			},
+			"times": [
+				1438,
+				1537,
+				1741
+			],
+			"allTests": [
+				{
+					"Status code is 200 (OK)": true,
+					"Product updated message": true
+				},
+				{
+					"Status code is 200 (OK)": false,
+					"Product updated message": false
+				},
+				{
+					"Status code is 200 (OK)": false,
+					"Product updated message": false
+				}
+			]
+		},
+		{
+			"id": "839f79a1-7c00-40a5-a8eb-cd3cdbd12e09",
+			"name": "Delete a product by its ID",
+			"url": "http://127.0.0.1:8000/api/products/12",
+			"time": 1750,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200 (OK)": false,
+				"Response includes 'Product deleted' message": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200 (OK)": {
+					"pass": 1,
+					"fail": 2
+				},
+				"Response includes 'Product deleted' message": {
+					"pass": 1,
+					"fail": 2
+				}
+			},
+			"times": [
+				1541,
+				1522,
+				1750
+			],
+			"allTests": [
+				{
+					"Status code is 200 (OK)": true,
+					"Response includes 'Product deleted' message": true
+				},
+				{
+					"Status code is 200 (OK)": false,
+					"Response includes 'Product deleted' message": false
+				},
+				{
+					"Status code is 200 (OK)": false,
+					"Response includes 'Product deleted' message": false
+				}
+			]
+		},
+		{
+			"id": "d9753f1b-ffd4-40b9-b75f-6b72ea91f974",
+			"name": "Retrieve all articles",
+			"url": "http://127.0.0.1:8000/api/articles",
+			"time": 1590,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Articles response is an array": true,
+				"Each article has required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Articles response is an array": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Each article has required fields": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1552,
+				1460,
+				1590
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Articles response is an array": true,
+					"Each article has required fields": true
+				},
+				{
+					"Status code is 200": true,
+					"Articles response is an array": true,
+					"Each article has required fields": true
+				},
+				{
+					"Status code is 200": true,
+					"Articles response is an array": true,
+					"Each article has required fields": true
+				}
+			]
+		},
+		{
+			"id": "7d03e477-60a0-46b1-ba87-9f30eb2776fb",
+			"name": "Retrieve a single article by ID",
+			"url": "http://127.0.0.1:8000/api/articles/5",
+			"time": 2455,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 or 404": true,
+				"If found, article has correct fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 or 404": {
+					"pass": 3,
+					"fail": 0
+				},
+				"If found, article has correct fields": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1921,
+				1421,
+				2455
+			],
+			"allTests": [
+				{
+					"Status code is 200 or 404": true,
+					"If found, article has correct fields": true
+				},
+				{
+					"Status code is 200 or 404": true,
+					"If found, article has correct fields": true
+				},
+				{
+					"Status code is 200 or 404": true,
+					"If found, article has correct fields": true
+				}
+			]
+		},
+		{
+			"id": "f841d4b5-00e8-4b5d-886e-cdc8921cb208",
+			"name": "Create a new article",
+			"url": "http://127.0.0.1:8000/api/articles",
+			"time": 1597,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201 (Created)": true,
+				"Response includes 'Article created' message and an id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201 (Created)": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Response includes 'Article created' message and an id": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1714,
+				1820,
+				1597
+			],
+			"allTests": [
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes 'Article created' message and an id": true
+				},
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes 'Article created' message and an id": true
+				},
+				{
+					"Status code is 201 (Created)": true,
+					"Response includes 'Article created' message and an id": true
+				}
+			]
+		},
+		{
+			"id": "dd04ed6e-e6ee-4bc7-89df-c4455a57b191",
+			"name": "Update an existing article",
+			"url": "http://127.0.0.1:8000/api/articles/3",
+			"time": 1579,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 (OK)": true,
+				"Article update success message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 (OK)": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Article update success message": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1756,
+				1988,
+				1579
+			],
+			"allTests": [
+				{
+					"Status code is 200 (OK)": true,
+					"Article update success message": true
+				},
+				{
+					"Status code is 200 (OK)": true,
+					"Article update success message": true
+				},
+				{
+					"Status code is 200 (OK)": true,
+					"Article update success message": true
+				}
+			]
+		},
+		{
+			"id": "2ee272d4-7df8-4522-ac76-87ee6d087104",
+			"name": "Delete a product by its ID Copy",
+			"url": "http://127.0.0.1:8000/api/articles/12",
+			"time": 1607,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200 or 404": true,
+				"Check deletion response structure": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 or 404": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Check deletion response structure": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				2198,
+				1877,
+				1607
+			],
+			"allTests": [
+				{
+					"Status code is 200 or 404": true,
+					"Check deletion response structure": true
+				},
+				{
+					"Status code is 200 or 404": true,
+					"Check deletion response structure": true
+				},
+				{
+					"Status code is 200 or 404": true,
+					"Check deletion response structure": true
+				}
+			]
+		},
+		{
+			"id": "17c6682f-22c8-4e6b-afdf-237c2736dffc",
+			"name": "User Registratrion",
+			"url": "http://127.0.0.1:8000/api/users",
+			"time": 1602,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 201 (Created) or 400 if user exists": true,
+				"Response has registration success or error": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201 (Created) or 400 if user exists": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Response has registration success or error": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				1313,
+				1665,
+				1602
+			],
+			"allTests": [
+				{
+					"Status code is 201 (Created) or 400 if user exists": true,
+					"Response has registration success or error": true
+				},
+				{
+					"Status code is 201 (Created) or 400 if user exists": true,
+					"Response has registration success or error": true
+				},
+				{
+					"Status code is 201 (Created) or 400 if user exists": true,
+					"Response has registration success or error": true
+				}
+			]
+		},
+		{
+			"id": "08743a00-191e-458e-b6b8-66bebfb4fd89",
+			"name": "User Login",
+			"url": "http://127.0.0.1:8000/api/login",
+			"time": 2304,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 or 401": true,
+				"If success, response has token": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 or 401": {
+					"pass": 3,
+					"fail": 0
+				},
+				"If success, response has token": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				2077,
+				2272,
+				2304
+			],
+			"allTests": [
+				{
+					"Status code is 200 or 401": true,
+					"If success, response has token": true
+				},
+				{
+					"Status code is 200 or 401": true,
+					"If success, response has token": true
+				},
+				{
+					"Status code is 200 or 401": true,
+					"If success, response has token": true
+				}
+			]
+		}
+	],
+	"count": 3,
+	"totalTime": 61526,
+	"collection": {
+		"requests": [
+			{
+				"id": "8c22d258-f55b-48ae-ae05-b675d7e113c7",
+				"method": "GET"
+			},
+			{
+				"id": "9e7c2ef9-a432-4ddc-aeb7-0102679f6181",
+				"method": "GET"
+			},
+			{
+				"id": "0dc9be8d-1604-4fe6-8680-7447dc1564bb",
+				"method": "POST"
+			},
+			{
+				"id": "5013ac7f-f228-40fb-b9e9-b2c618476c7a",
+				"method": "PUT"
+			},
+			{
+				"id": "839f79a1-7c00-40a5-a8eb-cd3cdbd12e09",
+				"method": "DELETE"
+			},
+			{
+				"id": "d9753f1b-ffd4-40b9-b75f-6b72ea91f974",
+				"method": "GET"
+			},
+			{
+				"id": "7d03e477-60a0-46b1-ba87-9f30eb2776fb",
+				"method": "GET"
+			},
+			{
+				"id": "f841d4b5-00e8-4b5d-886e-cdc8921cb208",
+				"method": "POST"
+			},
+			{
+				"id": "dd04ed6e-e6ee-4bc7-89df-c4455a57b191",
+				"method": "PUT"
+			},
+			{
+				"id": "2ee272d4-7df8-4522-ac76-87ee6d087104",
+				"method": "DELETE"
+			},
+			{
+				"id": "17c6682f-22c8-4e6b-afdf-237c2736dffc",
+				"method": "POST"
+			},
+			{
+				"id": "08743a00-191e-458e-b6b8-66bebfb4fd89",
+				"method": "POST"
+			}
+		]
+	}
+}
